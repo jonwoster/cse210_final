@@ -1,0 +1,30 @@
+Space invaders-like:
+-An actor/shooter at the bottom that can move horizontally but not vertically
+-When the shooter hits the space bar it fires a bullet straight vertically.If the bullet doesn't hit anything on the way up, it just disappears when it reaches the top.
+-First three rows of aliens are loaded up at the start of the game. 
+-The aliens then move down one increment every X seconds. As they move down, they are backfilled with another row of aliens. Max 7 rows of aliens are created.
+-If any aliens touch the bottom of the play area, then the game ends and we display a message saying th player lost.
+-If the shooter is able to kill all the aliens on the screen, they win and we display a message saying they won.
+-Use characters (like snake, cycle, stones/gems) instead of fancy graphics
+-Aliens will be an individual character 
+-Will start with one font size
+-If we have time later, can add in sound, better graphics, different font sizes for each type of actor, scoring, etc.
+Use:
+    Keyboard services, use arrows instead letters
+    Video service
+    Main
+    Director
+    Point
+    Color
+    Actor
+    Cast
+    Action
+    Constants
+Can start with stones and gems as the basic starting point, then add in from subsequent projects
+Need to accomplish:
+    -Set up initial file structure, with inital classes in the files- Monika
+    -Shooting aspect -Create bullet class which is an actor, make it so hitting space bar shoots a bullet. Modify keyboard class? : Camron
+    -Create alien class which is an actor & Moving aliens down every X seconds & Adding additional aliens until we get to 7 rows: Wylee
+    -Sensing collision of bullet hitting an alien & making aliens disappear when there is a conflict of bullet hitting an alien. Part of a collision
+      handling method: Jonathan 
+    -Game over messages (middle of the screen like snake/cycle)- declaring them a winner or a loser : Arnaldo
