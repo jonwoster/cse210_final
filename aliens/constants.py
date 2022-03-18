@@ -2,11 +2,11 @@ from game.shared.color import Color
 
 
 
-CELL_SIZE = 30
-MAX_X = 1200
-MAX_Y = 900
+CELL_SIZE = 15
+MAX_X = 900
+MAX_Y = 600
 FRAME_RATE = 5
-FONT_SIZE = 30
+FONT_SIZE = 15
 COLUMNS = int(MAX_X/CELL_SIZE)   # Columns * cell size = MAX_X
 ROWS = int(MAX_Y/FONT_SIZE)     # Rows * cell size = MAX_Y
 CAPTION = "Alien Invasion"
