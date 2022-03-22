@@ -12,9 +12,9 @@ sound = raylib.LoadSound("snake\game\sounds\player_sound.wav".encode('ascii'))
 
 class ControlActorsAction(Action):
     """
-    An input action that controls the cycle1.
+    An input action that controls the player movement left and right
     
-    The responsibility of ControlActorsAction is to get the direction and move the cycle1's head.
+    The responsibility of ControlActorsAction is to get the direction and move the player left and right
 
     Attributes:
         _keyboard_service (KeyboardService): An instance of KeyboardService.
@@ -37,16 +37,20 @@ class ControlActorsAction(Action):
             script (Script): The script of Actions in the game.
         """
         player = cast.get_first_actor("player")
-        cycle2 = cast.get_first_actor("cycles2")
+        # cycle2 = cast.get_first_actor("cycles2")
 
-        # left
+        # The default is that the player is not moving
+        self._direction = Point(0,0)
+        player.set_velocity(self._direction) 
+
+        # Move the player left if they hit the left arrow
         if self._keyboard_service.is_key_down(constants.LT):
             self._direction = Point(-constants.CELL_SIZE, 0)
             player.set_velocity(self._direction)
             #play sound
             raylib.PlaySound(sound)
         
-        # right
+        # Move the player right if they hit the right arrow
         if self._keyboard_service.is_key_down(constants.RT):
             self._direction = Point(constants.CELL_SIZE, 0)
             player.set_velocity(self._direction)
