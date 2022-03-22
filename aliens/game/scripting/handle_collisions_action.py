@@ -76,10 +76,10 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_over:
-            cycle1 = cast.get_first_actor("cycles1")
-            segments1 = cycle1.get_segments()
-            cycle2 = cast.get_first_actor("cycles2")
-            segments2 = cycle2.get_segments()
+            # cycle1 = cast.get_first_actor("cycles1")
+            # segments1 = cycle1.get_segments()
+            # cycle2 = cast.get_first_actor("cycles2")
+            # segments2 = cycle2.get_segments()
 
             x = int(constants.MAX_X / 2)
             y = int(constants.MAX_Y / 2)
@@ -93,7 +93,7 @@ class HandleCollisionsAction(Action):
             #play sound
             raylib.PlaySound(sound)
 
-            for segment in segments1:
-                segment.set_color(constants.WHITE)
-            for segment in segments2:
-                segment.set_color(constants.WHITE)
+            # for segment in segments1:
+            #     segment.set_color(constants.WHITE)
+            # for segment in segments2:
+            #     segment.set_color(constants.WHITE)
