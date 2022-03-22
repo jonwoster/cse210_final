@@ -3,8 +3,8 @@ import constants
 from game.casting.cast import Cast
 from game.casting.score import Score
 from game.casting.player import Player
-from game.casting.cycle1 import Cycle1
-from game.casting.cycle2 import Cycle2
+# from game.casting.cycle1 import Cycle1
+# from game.casting.cycle2 import Cycle2
 from game.casting.alien import Alien
 from game.scripting.script import Script
 from game.scripting.control_actors_action import ControlActorsAction
@@ -23,8 +23,8 @@ def main():
     # create the cast
     cast = Cast()
     cast.add_actor("player", Player())
-    cast.add_actor("cycles2", Cycle2())
-    cast.add_actor("cycles1", Cycle1())    
+    # cast.add_actor("cycles2", Cycle2())
+    # cast.add_actor("cycles1", Cycle1())    
     cast.add_actor("scores", Score())
     cast.add_actor("aliens", Alien())
    

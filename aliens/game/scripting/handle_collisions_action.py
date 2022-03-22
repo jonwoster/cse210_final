@@ -42,12 +42,12 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         score = cast.get_first_actor("scores")
-        cycle1 = cast.get_first_actor("cycles1")
-        head1 = cycle1.get_segments()[0]
-        segments1 = cycle1.get_segments()[1:]
-        cycle2 = cast.get_first_actor("cycles2")
-        head2 = cycle2.get_segments() [0]
-        segments2 = cycle2.get_segments()[1:]
+        # cycle1 = cast.get_first_actor("cycles1")
+        # head1 = cycle1.get_segments()[0]
+        # segments1 = cycle1.get_segments()[1:]
+        # cycle2 = cast.get_first_actor("cycles2")
+        # head2 = cycle2.get_segments() [0]
+        # segments2 = cycle2.get_segments()[1:]
         
         # for segment in segments1:
         #     if head1.get_position().equals(segment.get_position()):
