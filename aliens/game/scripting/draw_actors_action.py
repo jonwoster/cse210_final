@@ -33,6 +33,9 @@ class DrawActorsAction(Action):
         cycle2 = cast.get_first_actor("cycles2")
         segments2 = cycle2.get_segments()
         messages = cast.get_actors("messages")
+        alien = cast.get_first_actor("aliens")
+        aliens = alien.get_aliens()
+
 
         self._video_service.clear_buffer()
         self._video_service.draw_actor(player)
@@ -40,4 +43,5 @@ class DrawActorsAction(Action):
         self._video_service.draw_actors(segments2)
         self._video_service.draw_actor(score)
         self._video_service.draw_actors(messages, True)
+        self._video_service.draw_actors(aliens)
         self._video_service.flush_buffer()
