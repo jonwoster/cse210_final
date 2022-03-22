@@ -10,7 +10,7 @@ FONT_SIZE = 15
 COLUMNS = int(MAX_X/CELL_SIZE)   # Columns * cell size = MAX_X
 ROWS = int(MAX_Y/FONT_SIZE)     # Rows * cell size = MAX_Y
 CAPTION = "Alien Invasion"
-CYCLE_LENGTH = 1
+# CYCLE_LENGTH = 1
 WHITE = Color(255, 255, 255)
 RED = Color(255, 0, 0)
 YELLOW = Color(255, 255, 0)
