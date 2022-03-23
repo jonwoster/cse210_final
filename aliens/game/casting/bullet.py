@@ -1,20 +1,24 @@
-from asyncio import constants
-from actor import Actor
-from aliens.game.shared.point import Point
+import constants
+from game.casting.actor import Actor
+from game.shared.point import Point
 
 class Bullet(Actor):
 
     def __init__(self):
-        self.bullets = {}
+        super().__init__()
+        self.bullets = []
         self.x = 0
         self.y=0
-        self.is_alive = True
+        self.create_bullet()
+        self._velocity = 10
 
     def fire(self):
         return self.bullets
 
-    def create_bullet(self, x, y):
+    def create_bullet(self):
         bullet = Actor()
+        x = 0
+        y = int(constants.MAX_Y - constants.CELL_SIZE)
         position = Point(x, y)
         velocity = Point(0, constants.CELL_SIZE * 2)
         text = "*"
