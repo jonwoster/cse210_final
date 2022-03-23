@@ -1,5 +1,5 @@
 import constants
-
+from game.casting.bullet import Bullet
 from game.casting.cast import Cast
 from game.casting.score import Score
 from game.casting.player import Player
@@ -27,6 +27,7 @@ def main():
     # cast.add_actor("cycles1", Cycle1())    
     cast.add_actor("scores", Score())
     cast.add_actor("aliens", Alien())
+    cast.add_actor("bullets", Bullet())
    
     # start the game
     keyboard_service = KeyboardService()
