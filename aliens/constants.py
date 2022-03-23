@@ -6,7 +6,7 @@ CELL_SIZE = 15
 MAX_X = 900
 MAX_Y = 600
 FRAME_RATE = 5
-FONT_SIZE = 15
+FONT_SIZE = 19
 COLUMNS = int(MAX_X/CELL_SIZE)   # Columns * cell size = MAX_X
 ROWS = int(MAX_Y/FONT_SIZE)     # Rows * cell size = MAX_Y
 CAPTION = "Alien Invasion"
