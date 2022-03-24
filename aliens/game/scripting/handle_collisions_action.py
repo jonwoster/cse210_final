@@ -80,16 +80,25 @@ class HandleCollisionsAction(Action):
             # segments1 = cycle1.get_segments()
             # cycle2 = cast.get_first_actor("cycles2")
             # segments2 = cycle2.get_segments()
-
+            #alien = cast.get_first_actor("alien")
+            #player = cast.get_first_actor("player")
+            
             x = int(constants.MAX_X / 2)
             y = int(constants.MAX_Y / 2)
             position = Point(x, y)
-
+            #if alien touch the bottom 
             message = Actor()
             message.set_text("Game Over!")
+            #message.set_text("You Lost")
             message.set_position(position)
             cast.add_actor("messages", message)
             
+            #if player kill aliens
+            #message = Actor()
+            #message.set_text("Game Over!")
+            #message.set_text("You Lost")
+            #message.set_position(position)
+            #cast.add_actor("messages", message)
             #play sound
             raylib.PlaySound(sound)
 
