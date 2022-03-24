@@ -35,6 +35,8 @@ class DrawActorsAction(Action):
         messages = cast.get_actors("messages")
         alien = cast.get_first_actor("aliens")
         aliens = alien.get_aliens()
+        bullet =cast.get_first_actor("bullets")
+        bullets = bullet.fire()
 
 
         self._video_service.clear_buffer()
@@ -44,4 +46,5 @@ class DrawActorsAction(Action):
         self._video_service.draw_actor(score)
         self._video_service.draw_actors(messages, True)
         self._video_service.draw_actors(aliens)
+        self._video_service.draw_actors(bullets)
         self._video_service.flush_buffer()

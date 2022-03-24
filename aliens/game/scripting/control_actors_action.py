@@ -37,6 +37,8 @@ class ControlActorsAction(Action):
             script (Script): The script of Actions in the game.
         """
         player = cast.get_first_actor("player")
+        bullet = cast.get_first_actor("bullets")
+        player_position = player.get_position()
         # cycle2 = cast.get_first_actor("cycles2")
 
         # The default is that the player is not moving
@@ -55,6 +57,18 @@ class ControlActorsAction(Action):
             self._direction = Point(constants.CELL_SIZE, 0)
             player.set_velocity(self._direction)
             raylib.PlaySound(sound)
+
+        # Fire bullet if the spacebar is pressed
+        if self._keyboard_service.is_key_down('space'):
+            bullet.create_bullet()
+            for bullet in bullet.bullets:
+                bullet.set_position(player_position)
+                self._direction = Point(0, 1)
+                bullet.set_velocity(self._direction)
+                # while bullet._is_alive:
+                #     bullet._velocity = Point(0, 1+=1)
+            raylib.PlaySound(sound)
+
        
         # left
         # if self._keyboard_service.is_key_down('a'):
