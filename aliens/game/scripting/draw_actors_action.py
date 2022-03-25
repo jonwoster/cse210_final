@@ -36,7 +36,7 @@ class DrawActorsAction(Action):
         alien = cast.get_first_actor("aliens")
         aliens = alien.get_aliens()
         bullet =cast.get_first_actor("bullets")
-        bullets = bullet.fire()
+        bullets = bullet.get_bullets()
 
 
         self._video_service.clear_buffer()
