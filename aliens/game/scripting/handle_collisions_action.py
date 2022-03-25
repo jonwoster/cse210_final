@@ -96,7 +96,7 @@ class HandleCollisionsAction(Action):
             #if player kill aliens
             #message = Actor()
             #message.set_text("Game Over!")
-            #message.set_text("You Lost")
+            #message.set_text("You Win")
             #message.set_position(position)
             #cast.add_actor("messages", message)
             #play sound
