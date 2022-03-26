@@ -41,7 +41,7 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        score = cast.get_first_actor("scores")
+        #score = cast.get_first_actor("scores")
         # cycle1 = cast.get_first_actor("cycles1")
         # head1 = cycle1.get_segments()[0]
         # segments1 = cycle1.get_segments()[1:]
@@ -80,9 +80,12 @@ class HandleCollisionsAction(Action):
             # segments1 = cycle1.get_segments()
             # cycle2 = cast.get_first_actor("cycles2")
             # segments2 = cycle2.get_segments()
-            #alien = cast.get_first_actor("alien")
+        
             #player = cast.get_first_actor("player")
-            
+            #alien = cast.get_first_actor("aliens")
+            #bullet = cast.get_first_actor("bullets")
+            #collision1 = alien.get_segments()
+            #collision2 = bullet.get_segment()
             x = int(constants.MAX_X / 2)
             y = int(constants.MAX_Y / 2)
             position = Point(x, y)
