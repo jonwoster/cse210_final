@@ -42,8 +42,8 @@ class ControlActorsAction(Action):
         # cycle2 = cast.get_first_actor("cycles2")
 
         # The default is that the player is not moving
-        # self._direction = Point(0,0)
-        # player.set_velocity(self._direction) 
+        self._direction = Point(0,0)
+        player.set_velocity(self._direction) 
 
         # Move the player left if they hit the left arrow
         if self._keyboard_service.is_key_down(constants.LT):

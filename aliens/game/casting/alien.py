@@ -36,7 +36,7 @@ class Alien(Actor):
         if self.timer >= 5:
             for alien in self.aliens:
                 alien.move_next()
-            if self.rows < 7:
+            if self.rows < constants.MAX_ALIEN_ROWS:
                 self.generate_aliens()
                 VideoService().draw_actors(self.aliens)
                 self.rows += 1

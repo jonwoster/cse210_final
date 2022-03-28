@@ -5,7 +5,7 @@ from game.shared.point import Point
 import raylib
 
 # #encode file to be read by raylib
-sound = raylib.LoadSound("snake\game\sounds\lose_sound.wav".encode('ascii'))
+# sound = raylib.LoadSound("snake\game\sounds\lose_sound.wav".encode('ascii'))
 
 
 class HandleCollisionsAction(Action):
@@ -48,6 +48,44 @@ class HandleCollisionsAction(Action):
         # cycle2 = cast.get_first_actor("cycles2")
         # head2 = cycle2.get_segments() [0]
         # segments2 = cycle2.get_segments()[1:]
+
+
+        # Get the list of bullets
+        _bullet = cast.get_first_actor("bullets")
+        _bullets = _bullet.get_bullets()
+        # Get the list of aliens
+        _alien = cast.get_first_actor("aliens")
+        _aliens = _alien.get_aliens()
+
+
+        #loop through the bullets
+        for _bullet in _bullets:
+            # loop through the aliens
+            for _alien in _aliens:
+                # if position of current bullet equals position of current alien, remove both the alien and the bullet
+                if _bullet.get_position().equals(_alien.get_position()):
+                    _bullets.remove(_bullet)
+                    _aliens.remove(_alien)
+
+                # if the count of aliens reaches 0, then set game over flag and exit method
+                if len(_aliens) == 0:
+                    self._is_game_over = True
+                    _bullets.clear()  # remove all bullets
+
+
+                # if the Y posiiton of the current alien reaches max Y, then set game over flag and exit method
+                # remove all items from the alien list
+                if (_alien.get_position().get_y()) == (constants.MAX_Y - constants.CELL_SIZE ):
+                    self._is_game_over = True
+                    _aliens.clear()  # remove all aliens
+                    _bullets.clear()  # remove all bullets
+
+            # if Y position of the current bullet reaches the top of screen, then remove the bullet 
+            # so it doesn't come back up from the bottom
+            if (_bullet.get_position().get_y()) <= (constants.MIN_Y):
+                #cast.remove_actor("bullets", _bullet)
+                _bullets.remove(_bullet)
+
         
         # for segment in segments1:
         #     if head1.get_position().equals(segment.get_position()):
@@ -103,7 +141,7 @@ class HandleCollisionsAction(Action):
             #message.set_position(position)
             #cast.add_actor("messages", message)
             #play sound
-            raylib.PlaySound(sound)
+            # raylib.PlaySound(sound)
 
             # for segment in segments1:
             #     segment.set_color(constants.WHITE)
