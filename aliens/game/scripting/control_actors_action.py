@@ -64,7 +64,7 @@ class ControlActorsAction(Action):
         # Fire bullet if the spacebar is pressed
         if self._keyboard_service.is_key_down('space'):
             bullet.create_bullet(cast)
-            raylib.PlaySound(sound)
+            # raylib.PlaySound(sound)
 
        
        
