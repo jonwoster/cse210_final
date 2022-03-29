@@ -1,4 +1,3 @@
-# from copyreg import constructor
 import constants
 from game.casting.actor import Actor
 from game.services.video_service import VideoService
