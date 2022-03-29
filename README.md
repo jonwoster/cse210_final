@@ -1,7 +1,8 @@
 # Alien Invasion Game for CSE 210
 # Status: in progress
 # Description:
-Greed is a game in which the player seeks to gather as many falling gems as possible. The game continues as long as the player wants more! This project was created for CSE 210 at BYU Idaho.
+Alien Invasion involves aliens descending from the sky and the player can shoot the them, trying to kill them all before they reach the ground. This project was created for the CSE 210 final project at BYU Idaho.
+
 # Project Structure:
 greed: folder housing all the parts for the game and where the __ main__.py and game design file live.
 __ main__.py: contains our main function utilizing the classes in different files and builds the game window definitions for video_service.py to use in drawing the game.
@@ -18,24 +19,25 @@ color.py: a file containing all info relating to the "Color" class.
 actor.py: a file containing all info relating to the "Actor" class.
 artifact.py: a file containing all info relating to the "Artifact" class.
 cast.py: a file containing all info relating to the "Cast" class.
+
 # Technologies Used:
-The only software required for this program is Python. You can download it here: https://www.python.org
-The collaboration was done via github: 
+- The only software required for this program is Python. You can download it here: https://www.python.org
+- The collaboration was done via github: https://github.com/jonwoster/cse210_final
 
 # How to Start:
 Open __ main__.py file using python 3.
 
 # Game Instructions:
-Gems (*) and rocks (o) randomly appear and fall from the top of the screen.
-The player (#) can move left or right along the bottom of the screen.
-If the player touches a gem they earn a point.
-If the player touches a rock they lose a point.
-Gems and rocks are removed when the player touches them.
-The game continues until the player closes the window.
+- The objective is to shoot and destroy the aliens before the reach the ground (bottom of the screen)
+- If any aliens (shown as "H" characters) reach the bottom of the screen, the game is over and the player loses
+- If the player is able to eliminate all the aliens from the sky, the game is over and the player wins
+- The player is at the bottom of the screen, shown as a "#"
+- Player can only move left or right by using keyboard left and right arrow buttons
+- Player can shoot bullets one at a time or continuously by hitting or holding down the keyboard space bar
 
 # Acknowledgements:
-Camron Erickson: eri20010@byui.edu
-Monika Meyers: nikasparks@mac.com
-Arnaldo Suarez: sua21007@byui.edu
-Wylee Everett: eve20003@byui.edu
-Jonathan Woster: jonathanwoster@gmail.com
+- Camron Erickson: eri20010@byui.edu
+- Monika Meyers: nikasparks@mac.com
+- Arnaldo Suarez: sua21007@byui.edu
+- Wylee Everett: eve20003@byui.edu
+- Jonathan Woster: jonathanwoster@gmail.com
