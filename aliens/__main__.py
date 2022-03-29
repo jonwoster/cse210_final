@@ -7,6 +7,7 @@ from game.casting.alien import Alien
 from game.scripting.script import Script
 from game.scripting.control_actors_action import ControlActorsAction                        
 from game.scripting.move_actors_action import MoveActorsAction
+from game.scripting.move_bullets_action import MoveBulletsAction
 from game.scripting.handle_collisions_action import HandleCollisionsAction
 from game.scripting.draw_actors_action import DrawActorsAction
 from game.directing.director import Director
@@ -32,6 +33,8 @@ def main():
     script = Script()
     script.add_action("input", ControlActorsAction(keyboard_service))
     script.add_action("update", MoveActorsAction())
+    script.add_action("update", HandleCollisionsAction())
+    script.add_action("update", MoveBulletsAction())
     script.add_action("update", HandleCollisionsAction())
     script.add_action("output", DrawActorsAction(video_service))
     

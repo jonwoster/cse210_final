@@ -21,6 +21,3 @@ class MoveActorsAction(Action):
         aliens = cast.get_actors("aliens")
         for actor in aliens:
             actor.move_next()
-        bullets = cast.get_actors("bullets")
-        for x in bullets:
-            x.move_next()

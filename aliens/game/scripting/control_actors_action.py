@@ -7,7 +7,10 @@ import raylib
 #initialize audio device
 raylib.InitAudioDevice()
 #encode file to be read by raylib
-sound = raylib.LoadSound("aliens\game\sounds\player_sound.wav".encode('ascii'))
+if constants.OS.lower() == "darwin":
+    sound = raylib.LoadSound("aliens/game/sounds/player_sound.wav".encode('ascii'))
+elif constants.OS.lower() == "windows":
+    sound = raylib.LoadSound("aliens\game\sounds\player_sound.wav".encode('ascii'))
 
 
 class ControlActorsAction(Action):
@@ -60,7 +63,7 @@ class ControlActorsAction(Action):
         # Fire bullet if the spacebar is pressed
         if self._keyboard_service.is_key_down('space'):
             bullet.create_bullet(cast)
-            raylib.PlaySound(sound)
+            # raylib.PlaySound(sound)
 
        
        

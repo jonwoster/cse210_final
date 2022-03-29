@@ -1,12 +1,16 @@
-from pickle import TRUE
 import constants
 from game.casting.actor import Actor
 from game.scripting.action import Action
 from game.shared.point import Point
 import raylib
 
-# #encode file to be read by raylib
-# sound = raylib.LoadSound("snake\game\sounds\lose_sound.wav".encode('ascii'))
+#encode file to be read by raylib
+if constants.OS.lower() == "darwin":
+    lose_sound = raylib.LoadSound("aliens/game/sounds/lose_sound.wav".encode('ascii'))
+    win_sound = raylib.LoadSound("aliens/game/sounds/win_sound.wav".encode('ascii'))
+elif constants.OS.lower() == "windows":
+    lose_sound = raylib.LoadSound("aliens\game\sounds\lose_sound.wav".encode('ascii'))
+    win_sound = raylib.LoadSound("aliens\game\sounds\win_sound.wav".encode('ascii'))
 
 
 class HandleCollisionsAction(Action):
@@ -72,6 +76,8 @@ class HandleCollisionsAction(Action):
             
                 message.set_position(position)
                 cast.add_actor("messages", message)
+                #play sound
+                raylib.PlaySound(lose_sound)
                 break
 
             _bullets = _bullet_dad.get_bullets()
@@ -80,48 +86,23 @@ class HandleCollisionsAction(Action):
             for _bullet in _bullets:
 
                 # if position of current bullet equals position of current alien, remove both the alien and the bullet
-                print(str(_bullet.get_position().get_y())+" "+str( _alien.get_position().get_y()))
-                if _bullet.get_position().get_y() == _alien.get_position().get_y():
-                    print("on alien row")
-                    print("x"+str(_bullet.get_position().get_x())+" "+str( _alien.get_position().get_x()))
+
                 if _bullet.get_position().equals(_alien.get_position()):
-                    print("normal collision")
+
                     _bullets.remove(_bullet)
                     _aliens.remove(_alien)
-                    # bullets_to_destory.append(_bullet)
-                    # alien_to_destroy.append(_alien)
+
 
                 # if Y position of the current bullet reaches the top of screen, then remove the bullet 
                 # so it doesn't come back up from the bottom
     
                 if (_bullet.get_position().get_y()) <= (constants.MIN_Y):
                     _bullets.remove(_bullet)
-                    # bullets_to_destory.append(_bullet)
-                # else:
 
-                    # bullet = _bullet.get_position()
-                    # alien= _alien.get_position()
-                    # if alien.get_x() <= bullet.get_x() and bullet.get_x() < alien.get_x() + constants.CELL_SIZE and alien.get_y() <= bullet.get_y() and bullet.get_y() < alien.get_y() + constants.CELL_SIZE:
-                    #     print("in bounding box")
-                    #     _bullets.remove(_bullet)
-                    #     _aliens.remove(_alien)
-                # if position of current bullet equals position just above current alien, remove both the alien and the bullet
-                # this is needed due to timing complexity to avoid them skipping by each other occasionally
-                _alien_x = _alien.get_position().get_x()
-                _alien_y = _alien.get_position().get_y()
-                _bullet_x = _bullet.get_position().get_x()
-                _bullet_y = _bullet.get_position().get_y()
 
-                if (_alien_x == _bullet_x) and (_alien_y > _bullet_y):
-                    _bullets.remove(_bullet)
-                    _aliens.remove(_alien)
 
-                # if the count of aliens reaches 0, then set game over flag and exit method
+            # if the count of aliens reaches 0, then set game over flag and exit method
 
-        #     for b in bullets_to_destory:
-        #         _bullets.remove(b)
-        # for a in alien_to_destroy:
-        #     _aliens.remove(a)
             if len(_aliens) == 0:
                 self._is_game_over = True
                 _bullets.clear()  # remove all bullets
@@ -136,6 +117,9 @@ class HandleCollisionsAction(Action):
                 
                 message.set_position(position)
                 cast.add_actor("messages", message)
+
+                #play sound
+                raylib.PlaySound(win_sound)
 
 
 

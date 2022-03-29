@@ -33,7 +33,7 @@ class Alien(Actor):
 
     def move_next(self):
         self.timer += 1
-        if self.timer >= 30:
+        if self.timer >= 10:
             print("moving aliens")
             for alien in self.aliens:
                 alien.move_next()
