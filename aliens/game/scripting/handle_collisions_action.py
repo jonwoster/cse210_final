@@ -1,3 +1,4 @@
+from pickle import TRUE
 import constants
 from game.casting.actor import Actor
 from game.scripting.action import Action
@@ -71,6 +72,18 @@ class HandleCollisionsAction(Action):
                 if len(_aliens) == 0:
                     self._is_game_over = True
                     _bullets.clear()  # remove all bullets
+                    x = int(constants.MAX_X / 2)
+                    y = int(constants.MAX_Y / 2)
+                    position = Point(x, y)
+                    message = Actor()
+                    
+                    
+                    #if player kill aliens
+                    message.set_text("Game Over! "" *** "" You Win!!!")
+                    
+                    message.set_position(position)
+                    cast.add_actor("messages", message)
+
 
 
                 # if the Y posiiton of the current alien reaches max Y, then set game over flag and exit method
@@ -79,6 +92,15 @@ class HandleCollisionsAction(Action):
                     self._is_game_over = True
                     _aliens.clear()  # remove all aliens
                     _bullets.clear()  # remove all bullets
+                    x = int(constants.MAX_X / 2)
+                    y = int(constants.MAX_Y / 2)
+                    position = Point(x, y)
+                    message = Actor()
+                    #if alien touch the bottom 
+                    message.set_text("Game Over!" " *** " "You Lost!!!")
+                
+                    message.set_position(position)
+                    cast.add_actor("messages", message)
 
             # if Y position of the current bullet reaches the top of screen, then remove the bullet 
             # so it doesn't come back up from the bottom
@@ -113,33 +135,14 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        if self._is_game_over:
-            # cycle1 = cast.get_first_actor("cycles1")
-            # segments1 = cycle1.get_segments()
-            # cycle2 = cast.get_first_actor("cycles2")
-            # segments2 = cycle2.get_segments()
+        #if self._is_game_over:
         
-            #player = cast.get_first_actor("player")
-            #alien = cast.get_first_actor("aliens")
-            #bullet = cast.get_first_actor("bullets")
-            #collision1 = alien.get_segments()
-            #collision2 = bullet.get_segment()
-            x = int(constants.MAX_X / 2)
-            y = int(constants.MAX_Y / 2)
-            position = Point(x, y)
-            #if alien touch the bottom 
-            message = Actor()
-            message.set_text("Game Over!")
-            #message.set_text("You Lost")
-            message.set_position(position)
-            cast.add_actor("messages", message)
+
             
-            #if player kill aliens
-            #message = Actor()
-            #message.set_text("Game Over!")
-            #message.set_text("You Win")
-            #message.set_position(position)
-            #cast.add_actor("messages", message)
+
+        
+            
+            
             #play sound
             # raylib.PlaySound(sound)
 
