@@ -26,23 +26,18 @@ class DrawActorsAction(Action):
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
+        # get element info to be drawn
         player = cast.get_first_actor("player")
         score = cast.get_first_actor("scores")
-        # cycle1 = cast.get_first_actor("cycles1")
-        # segments1 = cycle1.get_segments()
-        # cycle2 = cast.get_first_actor("cycles2")
-        # segments2 = cycle2.get_segments()
         messages = cast.get_actors("messages")
         alien = cast.get_first_actor("aliens")
         aliens = alien.get_aliens()
         bullet =cast.get_first_actor("bullets")
         bullets = bullet.get_bullets()
 
-
+        # draw elements on GUI
         self._video_service.clear_buffer()
         self._video_service.draw_actor(player)
-        # self._video_service.draw_actors(segments1)
-        # self._video_service.draw_actors(segments2)
         self._video_service.draw_actor(score)
         self._video_service.draw_actors(messages, True)
         self._video_service.draw_actors(aliens)

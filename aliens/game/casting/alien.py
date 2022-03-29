@@ -1,4 +1,4 @@
-from copyreg import constructor
+# from copyreg import constructor
 import constants
 from game.casting.actor import Actor
 from game.services.video_service import VideoService
@@ -34,7 +34,6 @@ class Alien(Actor):
     def move_next(self):
         self.timer += 1
         if self.timer >= 10:
-            print("moving aliens")
             for alien in self.aliens:
                 alien.move_next()
             if self.rows < constants.MAX_ALIEN_ROWS:

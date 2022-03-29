@@ -4,7 +4,7 @@ from game.scripting.action import Action
 from game.shared.point import Point
 import raylib
 
-#encode file to be read by raylib
+# encode file to be read by raylib for game over sounds
 if constants.OS.lower() == "darwin":
     lose_sound = raylib.LoadSound("aliens/game/sounds/lose_sound.wav".encode('ascii'))
     win_sound = raylib.LoadSound("aliens/game/sounds/win_sound.wav".encode('ascii'))
@@ -56,7 +56,7 @@ class HandleCollisionsAction(Action):
         for alien in aliens:
 
             # if the Y posiiton of the current alien reaches max Y, then set game over flag
-            # remove all items from the alien list
+            # remove all items from the alien list and display game over message
             if alien.get_position().get_y() >= constants.BOTTOM_SCREEN:
                 self._is_game_over = True
                 aliens.clear()  # remove all aliens
@@ -90,7 +90,7 @@ class HandleCollisionsAction(Action):
                 if (bullet.get_position().get_y()) <= (constants.MIN_Y):
                     bullets.remove(bullet)
 
-            # if the count of aliens reaches 0, then set game over flag
+            # if the count of aliens reaches 0, then set game over flag and display game over message
             if len(aliens) == 0:
                 self._is_game_over = True
                 bullets.clear()  # remove all bullets

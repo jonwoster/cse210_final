@@ -1,4 +1,3 @@
-import constants
 from game.casting.bullet import Bullet
 from game.casting.cast import Cast
 from game.casting.score import Score
@@ -13,9 +12,8 @@ from game.scripting.draw_actors_action import DrawActorsAction
 from game.directing.director import Director
 from game.services.keyboard_service import KeyboardService
 from game.services.video_service import VideoService
-from game.shared.color import Color
-from game.shared.point import Point
 
+# Main sets up the cast groups, the script of actions and then calls Director to start the game
 
 def main():
     
