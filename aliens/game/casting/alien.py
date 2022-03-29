@@ -43,5 +43,3 @@ class Alien(Actor):
                 self.rows += 1
             self.timer = 0
 
-        # else:
-        #     pass

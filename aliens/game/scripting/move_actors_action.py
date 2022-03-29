@@ -3,9 +3,9 @@ from game.scripting.action import Action
 
 class MoveActorsAction(Action):
     """
-    An update action that moves all the actors.
+    An update action that moves the player and alien actors.
     
-    The responsibility of MoveActorsAction is to move all the actors that have a velocity greater
+    The responsibility of MoveActorsAction is to move the player and alien actors that have a velocity greater
     than zero.
     """
 

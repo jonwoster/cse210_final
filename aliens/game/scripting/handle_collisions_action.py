@@ -17,8 +17,7 @@ class HandleCollisionsAction(Action):
     """
     An update action that handles interactions between the actors.
     
-    The responsibility of HandleCollisionsAction is to handle the situation when the cycle1 collides
-    with the food, or the cycle1 collides with its segments, or the game is over.
+    The responsibility of HandleCollisionsAction is to handle the situation when bullet collides with aliens, or aliens with the ground, or the game is over.
 
     Attributes:
         _is_game_over (boolean): Whether or not the game is over.
@@ -48,23 +47,23 @@ class HandleCollisionsAction(Action):
         """
 
         # Get the list of bullets
-        _bullet_dad = cast.get_first_actor("bullets")
+        bullet_group = cast.get_first_actor("bullets")
 
         # Get the list of aliens
-        _alien_dad = cast.get_first_actor("aliens")
-        _aliens = _alien_dad.get_aliens()
+        alien_group = cast.get_first_actor("aliens")
+        aliens = alien_group.get_aliens()
 
-        _player = cast.get_first_actor("player")
+        
 
-        # alien_to_destroy = []
+        
             # loop through the aliens
-        for _alien in _aliens:
+        for alien in aliens:
                 # if the Y posiiton of the current alien reaches max Y, then set game over flag
                 # remove all items from the alien list
-            # print(_alien.get_position().get_y())
-            if _alien.get_position().get_y() >= constants.BOTTOM_SCREEN:
+            
+            if alien.get_position().get_y() >= constants.BOTTOM_SCREEN:
                 self._is_game_over = True
-                _aliens.clear()  # remove all aliens
+                aliens.clear()  # remove all aliens
 
                 
                 x = int(constants.MAX_X / 2)
@@ -80,32 +79,32 @@ class HandleCollisionsAction(Action):
                 raylib.PlaySound(lose_sound)
                 break
 
-            _bullets = _bullet_dad.get_bullets()
-            # bullets_to_destory=[]
+            bullets = bullet_group.get_bullets()
+            
             #loop through the bullets
-            for _bullet in _bullets:
+            for bullet in bullets:
 
                 # if position of current bullet equals position of current alien, remove both the alien and the bullet
 
-                if _bullet.get_position().equals(_alien.get_position()):
+                if bullet.get_position().equals(alien.get_position()):
 
-                    _bullets.remove(_bullet)
-                    _aliens.remove(_alien)
+                    bullets.remove(bullet)
+                    aliens.remove(alien)
 
 
                 # if Y position of the current bullet reaches the top of screen, then remove the bullet 
                 # so it doesn't come back up from the bottom
     
-                if (_bullet.get_position().get_y()) <= (constants.MIN_Y):
-                    _bullets.remove(_bullet)
+                if (bullet.get_position().get_y()) <= (constants.MIN_Y):
+                    bullets.remove(bullet)
 
 
 
             # if the count of aliens reaches 0, then set game over flag and exit method
 
-            if len(_aliens) == 0:
+            if len(aliens) == 0:
                 self._is_game_over = True
-                _bullets.clear()  # remove all bullets
+                bullets.clear()  # remove all bullets
                 x = int(constants.MAX_X / 2)
                 y = int(constants.MAX_Y / 2)
                 position = Point(x, y)
@@ -127,24 +126,11 @@ class HandleCollisionsAction(Action):
 
 
 
-    def _handle_game_over(self, cast):
-        """Shows the 'game over' message and turns the cycle1 and food white if the game is over.
-        
-        Args:
-            cast (Cast): The cast of Actors in the game.
-        """
-        #if self._is_game_over:
-        
+
 
             
 
         
             
             
-            #play sound
-            # raylib.PlaySound(sound)
-
-            # for segment in segments1:
-            #     segment.set_color(constants.WHITE)
-            # for segment in segments2:
-            #     segment.set_color(constants.WHITE)
+           

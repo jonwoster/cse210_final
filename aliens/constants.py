@@ -8,7 +8,7 @@ CELL_SIZE = 30
 MAX_X = 1200
 MAX_Y = 900
 MIN_Y = 0 # set min Y to be used for making bullets go away
-MIN_X = 0
+MIN_X = 0 # set min x 
 FRAME_RATE = 10
 FONT_SIZE = 30
 COLUMNS = int(MAX_X/CELL_SIZE)   # Columns * cell size = MAX_X
@@ -24,5 +24,5 @@ SCORE_Y = 5     # y component for where score is displayed
 RT = 'rt'    # right direction arrow
 LT = 'lt'     # left direction arrow
 MAX_ALIEN_ROWS = 7  # how many rows of aliens to create
-BOTTOM_SCREEN = MAX_Y-(CELL_SIZE)
-OS = platform.system()
+BOTTOM_SCREEN = MAX_Y-(CELL_SIZE) # establish bottom of screen
+OS = platform.system() #check for system type to determine file path sytax for sound files.

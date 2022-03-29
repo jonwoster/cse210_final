@@ -3,9 +3,9 @@ from game.scripting.action import Action
 
 class MoveBulletsAction(Action):
     """
-    An update action that moves all the actors.
+    An update action that moves the bullet actors.
     
-    The responsibility of MoveActorsAction is to move all the actors that have a velocity greater
+    The responsibility of MoveBulletAction is to move the bullet actors that have a velocity greater
     than zero.
     """
 
@@ -17,5 +17,5 @@ class MoveBulletsAction(Action):
             script (Script): The script of Actions in the game.
         """
         bullets = cast.get_actors("bullets")
-        for x in bullets:
-            x.move_next()
+        for actor in bullets:
+            actor.move_next()
