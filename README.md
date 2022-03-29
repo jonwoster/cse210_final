@@ -37,7 +37,8 @@ The game folder containing the additional folders that comprise the game. It con
 - sounds (folder): containing sound (WAV) files
 
 ## Technologies Used:
-- The only software required for this program is Python. You can download it here: https://www.python.org
+- The software required for this program is Python. You can download it here: https://www.python.org
+- The raylib library is needed as well.
 - The collaboration was done via github: https://github.com/jonwoster/cse210_final
 
 ## How to Start:
