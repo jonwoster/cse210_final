@@ -7,7 +7,7 @@ from game.casting.player import Player
 # from game.casting.cycle2 import Cycle2
 from game.casting.alien import Alien
 from game.scripting.script import Script
-from game.scripting.control_actors_action import ControlActorsAction
+from game.scripting.control_actors_action import ControlActorsAction                        
 from game.scripting.move_actors_action import MoveActorsAction
 from game.scripting.handle_collisions_action import HandleCollisionsAction
 from game.scripting.draw_actors_action import DrawActorsAction

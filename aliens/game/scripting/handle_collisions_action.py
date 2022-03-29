@@ -57,6 +57,7 @@ class HandleCollisionsAction(Action):
         _alien = cast.get_first_actor("aliens")
         _aliens = _alien.get_aliens()
 
+        _player = cast.get_first_actor("player")
 
         #loop through the bullets
         for _bullet in _bullets:
@@ -66,45 +67,34 @@ class HandleCollisionsAction(Action):
                 if _bullet.get_position().equals(_alien.get_position()):
                     _bullets.remove(_bullet)
                     _aliens.remove(_alien)
+                
+                # if position of current bullet equals position just above current alien, remove both the alien and the bullet
+                # this is needed due to timing complexity to avoid them skipping by each other occasionally
+                _alien_x = _alien.get_position().get_x()
+                _alien_y = _alien.get_position().get_y()
+                _bullet_x = _bullet.get_position().get_x()
+                _bullet_y = _bullet.get_position().get_y()
+
+                if (_alien_x == _bullet_x) and (_alien_y > _bullet_y):
+                    _bullets.remove(_bullet)
+                    _aliens.remove(_alien)
 
                 # if the count of aliens reaches 0, then set game over flag and exit method
                 if len(_aliens) == 0:
                     self._is_game_over = True
                     _bullets.clear()  # remove all bullets
 
-
-                # if the Y posiiton of the current alien reaches max Y, then set game over flag and exit method
+                # if the Y posiiton of the current alien reaches max Y, then set game over flag
                 # remove all items from the alien list
-                if (_alien.get_position().get_y()) == (constants.MAX_Y - constants.CELL_SIZE ):
+                if (_alien.get_position().get_y()) >= (_player.get_position().get_y() - constants.CELL_SIZE):
                     self._is_game_over = True
                     _aliens.clear()  # remove all aliens
-                    _bullets.clear()  # remove all bullets
+                    # _bullets.clear()  # remove all bullets
 
             # if Y position of the current bullet reaches the top of screen, then remove the bullet 
             # so it doesn't come back up from the bottom
             if (_bullet.get_position().get_y()) <= (constants.MIN_Y):
-                #cast.remove_actor("bullets", _bullet)
                 _bullets.remove(_bullet)
-
-        
-        # for segment in segments1:
-        #     if head1.get_position().equals(segment.get_position()):
-        #         self._is_game_over = True           
-        # for segment in segments2:
-        #     if head2.get_position().equals(segment.get_position()):
-        #         self._is_game_over = True
-        # for segment in segments1:
-        #     if head2.get_position().equals(segment.get_position()):
-        #         self._is_game_over = True
-        # for segment in segments2:
-        #     if head1.get_position().equals(segment.get_position()):
-        #         self._is_game_over = True  
-        # else:
-        #     cycle1.grow_trail(1)
-        #     cycle2.grow_trail(1)
-        #     _seg_count = len(segments1) # get the length of segments for cycle 1
-        #     score.update_seg_count(_seg_count) # send the length of of segments to Score class to update the segments created that is shown on the screen
-                    
 
 
     def _handle_game_over(self, cast):

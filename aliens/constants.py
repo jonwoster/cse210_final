@@ -6,7 +6,7 @@ CELL_SIZE = 15
 MAX_X = 900
 MAX_Y = 600
 MIN_Y = 0 # set min Y to be used for making bullets go away
-FRAME_RATE = 5
+FRAME_RATE = 10
 FONT_SIZE = 19
 COLUMNS = int(MAX_X/CELL_SIZE)   # Columns * cell size = MAX_X
 ROWS = int(MAX_Y/FONT_SIZE)     # Rows * cell size = MAX_Y
