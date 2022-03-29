@@ -33,7 +33,8 @@ class Alien(Actor):
 
     def move_next(self):
         self.timer += 1
-        if self.timer >= 5:
+        if self.timer >= 30:
+            print("moving aliens")
             for alien in self.aliens:
                 alien.move_next()
             if self.rows < constants.MAX_ALIEN_ROWS:
@@ -41,5 +42,6 @@ class Alien(Actor):
                 VideoService().draw_actors(self.aliens)
                 self.rows += 1
             self.timer = 0
-        else:
-            pass
+
+        # else:
+        #     pass
