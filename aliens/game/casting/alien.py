@@ -4,6 +4,13 @@ from game.services.video_service import VideoService
 from game.shared.point import Point
 
 class Alien(Actor):
+    """
+    The aliens are enemies that will move down the screen until they are
+    hit by a bullet or reach the bottom making the player lose.
+    
+    Attributes:
+        self.aliens[list]: When an alien is created it will append to this list
+    """
 
     def __init__(self):
         super().__init__()
@@ -13,6 +20,7 @@ class Alien(Actor):
         self.timer = 0
 
     def generate_aliens(self):
+        """generates a row of aliens at the top"""
         for n in range(constants.COLUMNS):
             x = (n)*constants.CELL_SIZE
             y = 0
@@ -28,9 +36,15 @@ class Alien(Actor):
             self.aliens.append(alien)
     
     def get_aliens(self):
+        """returns the list of aliens"""
         return self.aliens
 
     def move_next(self):
+        """
+        Moves the aliens down one row when the timer is ready.
+        Generates more aliens if the max rows haven't been filled yet.
+        Resets the timer.
+        """
         self.timer += 1
         if self.timer >= 10:
             for alien in self.aliens:
