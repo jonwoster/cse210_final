@@ -18,18 +18,18 @@ class Bullet(Actor):
         
     def create_bullet(self, cast):
         """Creates a bullet with needed attributes and appends it to self.bullets."""
-        _player = cast.get_first_actor("player")
-        _player_position = _player.get_position()
-        _velocity = Point(0, -constants.CELL_SIZE)
+        player = cast.get_first_actor("player")
+        player_position = player.get_position()
+        velocity = Point(0, -constants.CELL_SIZE)
                 
         #set attributes for the display of the bullet:
-        _text = "*"
-        _color = constants.RED
+        text = "*"
+        color = constants.RED
         bullet = Actor()
-        bullet.set_position(_player_position)
-        bullet.set_velocity(_velocity)
-        bullet.set_text(_text)
-        bullet.set_color(_color)
+        bullet.set_position(player_position)
+        bullet.set_velocity(velocity)
+        bullet.set_text(text)
+        bullet.set_color(color)
         # Add bullet to the list of active bullets.
         self._bullets.append(bullet)
     

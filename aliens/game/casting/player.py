@@ -17,13 +17,13 @@ class Player(Actor):
         self._prepare_body()
     
     def _prepare_body(self):
-        _x = int(constants.MAX_X / 2)
-        _y = int(constants.MAX_Y - constants.CELL_SIZE)
+        x = int(constants.MAX_X / 2)
+        y = int(constants.MAX_Y - constants.CELL_SIZE)
 
-        _position = Point(_x, _y)
-        _text = "#"
-        _color = constants.WHITE
+        position = Point(x, y)
+        text = "#"
+        color = constants.WHITE
       
-        self.set_position(_position)
-        self.set_text(_text)
-        self.set_color(_color)
+        self.set_position(position)
+        self.set_text(text)
+        self.set_color(color)

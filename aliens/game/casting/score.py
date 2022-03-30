@@ -14,7 +14,7 @@ class Score(Actor):
     def __init__(self):
         super().__init__()
 
-        _position = Point(constants.SCORE_X, constants.SCORE_Y)  # Import location of score from Constants file
-        self.set_position(_position) # Set the position of the score
+        position = Point(constants.SCORE_X, constants.SCORE_Y)  # Import location of score from Constants file
+        self.set_position(position) # Set the position of the score
 
     

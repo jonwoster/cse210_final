@@ -6,11 +6,11 @@ import raylib
 
 # encode file to be read by raylib for game over sounds
 if constants.OS.lower() == "darwin":
-    _lose_sound = raylib.LoadSound("aliens/game/sounds/lose_sound.wav".encode('ascii'))
-    _win_sound = raylib.LoadSound("aliens/game/sounds/win_sound.wav".encode('ascii'))
+    lose_sound = raylib.LoadSound("aliens/game/sounds/lose_sound.wav".encode('ascii'))
+    win_sound = raylib.LoadSound("aliens/game/sounds/win_sound.wav".encode('ascii'))
 elif constants.OS.lower() == "windows":
-    _lose_sound = raylib.LoadSound("aliens\game\sounds\lose_sound.wav".encode('ascii'))
-    _win_sound = raylib.LoadSound("aliens\game\sounds\win_sound.wav".encode('ascii'))
+    lose_sound = raylib.LoadSound("aliens\game\sounds\lose_sound.wav".encode('ascii'))
+    win_sound = raylib.LoadSound("aliens\game\sounds\win_sound.wav".encode('ascii'))
 
 
 class HandleCollisionsAction(Action):
@@ -46,67 +46,67 @@ class HandleCollisionsAction(Action):
         """
 
         # Get the list of bullets
-        _bullet_group = cast.get_first_actor("bullets")
+        bullet_group = cast.get_first_actor("bullets")
 
         # Get the list of aliens
-        _alien_group = cast.get_first_actor("aliens")
-        _aliens = _alien_group.get_aliens()
+        alien_group = cast.get_first_actor("aliens")
+        aliens = alien_group.get_aliens()
         
         # loop through the aliens
-        for alien in _aliens:
+        for alien in aliens:
 
             # if the Y posiiton of the current alien reaches max Y, then set game over flag
             # remove all items from the alien list and display game over message
             if alien.get_position().get_y() >= constants.BOTTOM_SCREEN:
                 self._is_game_over = True
-                _aliens.clear()  # remove all aliens
+                aliens.clear()  # remove all aliens
 
                 # set up position for game over message
-                _x = int(constants.MAX_X / 2)
-                _y = int(constants.MAX_Y / 2)
-                _position = Point(_x, _y)
+                x = int(constants.MAX_X / 2)
+                y = int(constants.MAX_Y / 2)
+                position = Point(x, y)
                 # set up message for game over
                 message = Actor()
                 message.set_text("Game Over!" " *** " "You Lost!!!")
-                message.set_position(_position)
+                message.set_position(position)
                 cast.add_actor("messages", message)
                 #play sound
-                raylib.PlaySound(_lose_sound)
+                raylib.PlaySound(lose_sound)
                 break
 
             # get the list of bullets
-            _bullets = _bullet_group.get_bullets()
+            bullets = bullet_group.get_bullets()
             
             #loop through the bullets
-            for bullet in _bullets:
+            for bullet in bullets:
 
                 # if position of current bullet equals position of current alien, remove both the alien and the bullet
                 if bullet.get_position().equals(alien.get_position()):
-                    _bullets.remove(bullet)
-                    _aliens.remove(alien)
+                    bullets.remove(bullet)
+                    aliens.remove(alien)
 
                 # if Y position of the current bullet reaches the top of screen, then remove the bullet 
                 # so it doesn't come back up from the bottom
                 if (bullet.get_position().get_y()) <= (constants.MIN_Y):
-                    _bullets.remove(bullet)
+                    bullets.remove(bullet)
 
             # if the count of aliens reaches 0, then set game over flag and display game over message
-            if len(_aliens) == 0:
+            if len(aliens) == 0:
                 self._is_game_over = True
-                _bullets.clear()  # remove all bullets
+                bullets.clear()  # remove all bullets
 
                 # setup the location of game over message
-                _x = int(constants.MAX_X / 2)
-                _y = int(constants.MAX_Y / 2)
-                _position = Point(_x, _y)
+                x = int(constants.MAX_X / 2)
+                y = int(constants.MAX_Y / 2)
+                _position = Point(x, y)
                 # setup the message for game over, indicating player won
                 message = Actor()
                 message.set_text("Game Over! "" *** "" You Win!!!")
-                message.set_position(_position)
+                message.set_position(position)
                 cast.add_actor("messages", message)
 
                 #play sound
-                raylib.PlaySound(_win_sound)
+                raylib.PlaySound(win_sound)
 
 
 

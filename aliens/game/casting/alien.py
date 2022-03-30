@@ -22,17 +22,17 @@ class Alien(Actor):
     def _generate_aliens(self):
         """generates a row of aliens at the top"""
         for n in range(constants.COLUMNS):
-            _x = (n)*constants.CELL_SIZE
-            _y = 0
-            _position = Point(_x, _y)
-            _velocity = Point(0, constants.CELL_SIZE)
-            _text = "H"
-            _color = constants.GREEN
+            x = (n)*constants.CELL_SIZE
+            y = 0
+            position = Point(x, y)
+            velocity = Point(0, constants.CELL_SIZE)
+            text = "H"
+            color = constants.GREEN
             alien = Actor()
-            alien.set_position(_position)
-            alien.set_velocity(_velocity)
-            alien.set_text(_text)
-            alien.set_color(_color)
+            alien.set_position(position)
+            alien.set_velocity(velocity)
+            alien.set_text(text)
+            alien.set_color(color)
             self._aliens.append(alien)
     
     def get_aliens(self):
