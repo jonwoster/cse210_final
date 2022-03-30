@@ -3,7 +3,7 @@ from game.casting.cast import Cast
 from game.casting.score import Score
 from game.casting.player import Player
 from game.casting.alien import Alien
-from game.scripting.script import Script
+from game.scripting.script import Script 
 from game.scripting.control_actors_action import ControlActorsAction                        
 from game.scripting.move_actors_action import MoveActorsAction
 from game.scripting.move_bullets_action import MoveBulletsAction
@@ -28,6 +28,7 @@ def main():
     keyboard_service = KeyboardService()
     video_service = VideoService()
 
+    # add in actions to the script
     script = Script()
     script.add_action("input", ControlActorsAction(keyboard_service))
     script.add_action("update", MoveActorsAction())
@@ -36,6 +37,7 @@ def main():
     script.add_action("update", HandleCollisionsAction())
     script.add_action("output", DrawActorsAction(video_service))
     
+    # Start the game by invoking Director's start_game method
     director = Director(video_service)
     director.start_game(cast, script)
 

@@ -14,18 +14,16 @@ class Player(Actor):
     """
     def __init__(self):
         super().__init__()
-        # self._body = Actor()
         self._prepare_body()
     
     def _prepare_body(self):
-        x = int(constants.MAX_X / 2)
-        y = int(constants.MAX_Y - constants.CELL_SIZE)
+        _x = int(constants.MAX_X / 2)
+        _y = int(constants.MAX_Y - constants.CELL_SIZE)
 
-        position = Point(x, y)
-        text = "#"
-        color = constants.WHITE
-        # body = self._body
+        _position = Point(_x, _y)
+        _text = "#"
+        _color = constants.WHITE
       
-        self.set_position(position)
-        self.set_text(text)
-        self.set_color(color)
+        self.set_position(_position)
+        self.set_text(_text)
+        self.set_color(_color)

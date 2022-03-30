@@ -14,30 +14,30 @@ class Alien(Actor):
 
     def __init__(self):
         super().__init__()
-        self.aliens = []
-        self.generate_aliens()
-        self.rows = 1
-        self.timer = 0
+        self._aliens = []
+        self._generate_aliens()
+        self._rows = 1
+        self._timer = 0
 
-    def generate_aliens(self):
+    def _generate_aliens(self):
         """generates a row of aliens at the top"""
         for n in range(constants.COLUMNS):
-            x = (n)*constants.CELL_SIZE
-            y = 0
-            position = Point(x, y)
-            velocity = Point(0, constants.CELL_SIZE)
-            text = "H"
-            color = constants.GREEN
+            _x = (n)*constants.CELL_SIZE
+            _y = 0
+            _position = Point(_x, _y)
+            _velocity = Point(0, constants.CELL_SIZE)
+            _text = "H"
+            _color = constants.GREEN
             alien = Actor()
-            alien.set_position(position)
-            alien.set_velocity(velocity)
-            alien.set_text(text)
-            alien.set_color(color)
-            self.aliens.append(alien)
+            alien.set_position(_position)
+            alien.set_velocity(_velocity)
+            alien.set_text(_text)
+            alien.set_color(_color)
+            self._aliens.append(alien)
     
     def get_aliens(self):
         """returns the list of aliens"""
-        return self.aliens
+        return self._aliens
 
     def move_next(self):
         """
@@ -45,13 +45,13 @@ class Alien(Actor):
         Generates more aliens if the max rows haven't been filled yet.
         Resets the timer.
         """
-        self.timer += 1
-        if self.timer >= 10:
-            for alien in self.aliens:
+        self._timer += 1
+        if self._timer >= 10:
+            for alien in self._aliens:
                 alien.move_next()
-            if self.rows < constants.MAX_ALIEN_ROWS:
-                self.generate_aliens()
-                VideoService().draw_actors(self.aliens)
-                self.rows += 1
-            self.timer = 0
+            if self._rows < constants.MAX_ALIEN_ROWS:
+                self._generate_aliens()
+                VideoService().draw_actors(self._aliens)
+                self._rows += 1
+            self._timer = 0
 

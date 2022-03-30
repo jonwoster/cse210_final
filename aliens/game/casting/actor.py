@@ -73,9 +73,9 @@ class Actor:
             max_x (int): The maximum x value.
             max_y (int): The maximum y value.
         """
-        x = (self._position.get_x() + self._velocity.get_x()) % constants.MAX_X
-        y = (self._position.get_y() + self._velocity.get_y()) % constants.MAX_Y
-        self._position = Point(x, y)
+        _x = (self._position.get_x() + self._velocity.get_x()) % constants.MAX_X
+        _y = (self._position.get_y() + self._velocity.get_y()) % constants.MAX_Y
+        self._position = Point(_x, _y)
 
     def set_color(self, color):
         """Updates the color to the given one.
