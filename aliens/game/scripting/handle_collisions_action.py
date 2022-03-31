@@ -98,7 +98,7 @@ class HandleCollisionsAction(Action):
                 # setup the location of game over message
                 x = int(constants.MAX_X / 2)
                 y = int(constants.MAX_Y / 2)
-                _position = Point(x, y)
+                position = Point(x, y)
                 # setup the message for game over, indicating player won
                 message = Actor()
                 message.set_text("Game Over! "" *** "" You Win!!!")
